@@ -1,4 +1,4 @@
-﻿// COMP30019 - Graphics and Interaction
+// COMP30019 - Graphics and Interaction
 // (c) University of Melbourne, 2022
 
 using System.Linq;
@@ -8,7 +8,7 @@ using UnityEngine;
 // MeshFilter component on the same game object. If it doesn't exist, the Unity
 // engine will create one automatically.
 [RequireComponent(typeof(MeshFilter))]
-public class GenerateCube : MonoBehaviour
+public class GeneratePyramid : MonoBehaviour
 {
     private void Start()
     {
@@ -27,7 +27,7 @@ public class GenerateCube : MonoBehaviour
         // - https://docs.unity3d.com/ScriptReference/Mesh.html
         var mesh = new Mesh
         {
-            name = "Cube"
+            name = "Pyramid"
         };
 
         // Step 1: Define the vertices. These are "points" in 3D space that
@@ -37,14 +37,7 @@ public class GenerateCube : MonoBehaviour
         // depends on the way the mesh surface itself is defined (step 3).
         mesh.SetVertices(new[]
         {
-            // Top face
-            new Vector3(-1.0f, 1.0f, -1.0f),
-            new Vector3(-1.0f, 1.0f, 1.0f),
-            new Vector3(1.0f, 1.0f, 1.0f),
-            
-            new Vector3(-1.0f, 1.0f, -1.0f),
-            new Vector3(1.0f, 1.0f, 1.0f),
-            new Vector3(1.0f, 1.0f, -1.0f),
+
 
             // Bottom face
             new Vector3(-1.0f, -1.0f, -1.0f),
@@ -58,20 +51,14 @@ public class GenerateCube : MonoBehaviour
             // Left face
             new Vector3(-1.0f, -1.0f, -1.0f),
             new Vector3(-1.0f, -1.0f, 1.0f),
-            new Vector3(-1.0f, 1.0f, 1.0f),
-            
-            new Vector3(-1.0f, -1.0f, -1.0f),
-            new Vector3(-1.0f, 1.0f, 1.0f),
-            new Vector3(-1.0f, 1.0f, -1.0f),
+            new Vector3(0f, 1.0f, 0f),
+
 
             // Right face
             new Vector3(1.0f, -1.0f, -1.0f),
             new Vector3(1.0f, 1.0f, 1.0f),
-            new Vector3(1.0f, -1.0f, 1.0f),
-            
-            new Vector3(1.0f, -1.0f, -1.0f),
-            new Vector3(1.0f, 1.0f, -1.0f),
-            new Vector3(1.0f, 1.0f, 1.0f),
+            new Vector3(0f, 1.0f, 0f),
+
 	    
 
 
@@ -79,36 +66,22 @@ public class GenerateCube : MonoBehaviour
 	    // front face
             new Vector3(-1.0f, -1.0f, -1.0f),
             new Vector3(-1.0f, 1.0f, -1.0f),
-            new Vector3(1.0f, 1.0f, -1.0f),
+            new Vector3(0f, 1.0f, 0f),
             
+			// back face
             new Vector3(-1.0f, -1.0f, -1.0f),
             new Vector3(1.0f, 1.0f, -1.0f),
-            new Vector3(1.0f, -1.0f, -1.0f),
+		    new Vector3(0f, 1.0f, 0f)
+		});
 
-            // back face
-            new Vector3(1.0f, 1.0f, 1.0f),
-            new Vector3(1.0f, -1.0f, 1.0f),
-            new Vector3(-1.0f, -1.0f, 1.0f),
-            
-            new Vector3(-1.0f, 1.0f, 1.0f),
-            new Vector3(1.0f, 1.0f, 1.0f),
-            new Vector3(-1.0f, -1.0f, 1.0f)
 
-        });
 
         // Step 2: Define the vertex colours. There is a one-to-one index
         // mapping between the vertices defined above and these colours below,
         // so the length of both arrays must be the same.
         mesh.SetColors(new[]
         {
-            // Top face
-            Color.red,
-            Color.red,
-            Color.red,
-            
-            Color.red,
-            Color.red,
-            Color.red,
+
 
             // Bottom face
             Color.red,
@@ -137,25 +110,6 @@ public class GenerateCube : MonoBehaviour
             Color.yellow,
             Color.yellow,
 
-            
-            // Define more colours here!
-	    // Face 1
-            Color.blue, 
-            Color.blue,
-            Color.blue,
-            
-            Color.blue,
-            Color.blue,
-            Color.blue,
-
-	    // Face 2
-            Color.blue, 
-            Color.blue,
-            Color.blue,
-            
-            Color.blue,
-            Color.blue,
-            Color.blue
         });
 
         // Step 3: Define the indices. The indices "connect" vertices together
@@ -178,3 +132,4 @@ public class GenerateCube : MonoBehaviour
         return mesh;
     }
 }
+
